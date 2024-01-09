@@ -178,7 +178,7 @@ def create_line_plot_for_country(data_frame, countries, title_name):
                plt.savefig(output_file_path, bbox_inches='tight', dpi=300)
 
             # Display the plot
-            plt.show()
+            #plt.show()
 
 
 def create_bar_chart(data_frame, y_label, title):
@@ -212,7 +212,7 @@ def create_bar_chart(data_frame, y_label, title):
        plt.savefig(output_file_path, bbox_inches='tight', dpi=300)
     
     # Display the plot
-    plt.show()
+    #plt.show()
 
 
 def create_2022_bar_chart(dataframes):
@@ -273,7 +273,7 @@ def create_2022_bar_chart(dataframes):
 
     plt.savefig("2022 Data Overview", bbox_inches='tight', dpi=300)
     
-    plt.show()
+    #plt.show()
 
 def create_pie_chart(mean_by_country, title, output_file_path):
     """
@@ -298,7 +298,7 @@ def create_pie_chart(mean_by_country, title, output_file_path):
     # Save the image if the output_file_path is provided
     if output_file_path:
        plt.savefig(output_file_path, bbox_inches='tight', dpi=300)
-    plt.show()
+    #plt.show()
     
     
 def create_2022_pie_chart(data_frame, title):
@@ -332,7 +332,7 @@ def create_2022_pie_chart(data_frame, title):
     if output_file_path:
        plt.savefig(output_file_path, bbox_inches='tight', dpi=300)
        
-    plt.show()
+    #plt.show()
 
 
 
@@ -358,7 +358,7 @@ if __name__ == "__main__":
     }
     
     #call line plot function according to categories
-    """for df_name, df in dataframes.items():
+    for df_name, df in dataframes.items():
         title_name = df_name.replace("_", " ").title()  # Create a y-axis label from DataFrame name
         create_line_plot(df, title_name)
     
@@ -371,14 +371,14 @@ if __name__ == "__main__":
         y_label = df_name.replace("_", " ").title()  # Create a y-axis label from DataFrame name
         title = f"{y_label} Over Years"
         #print(df)
-        create_bar_chart(df, y_label, title)   """
+        create_bar_chart(df, y_label, title)
         
     """for df_name, df in dataframes.items():
         y_label = df_name.replace("_", " ").title()  # Create a y-axis label from DataFrame name
         title = f"{y_label} in 2022"""
     create_2022_bar_chart(dataframes)
         
-    """for df_name, df in dataframes.items():
+    for df_name, df in dataframes.items():
         mean_by_country = df.iloc[:,1:].mean(axis=0)
         y_label = df_name.replace("_", " ").title()  # Create a y-axis label from DataFrame name
         title = f"Distribution of {y_label} Over Years"
@@ -388,4 +388,4 @@ if __name__ == "__main__":
     for df_name, df in dataframes.items():
         y_label = df_name.replace("_", " ").title()  # Create a y-axis label from DataFrame name
         title = f"{y_label} in 2022"
-        create_2022_pie_chart(df, title)"""
+        create_2022_pie_chart(df, title)
