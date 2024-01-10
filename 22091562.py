@@ -299,7 +299,7 @@ def create_pie_chart(mean_by_country, title, output_file_path):
     if output_file_path:
        plt.savefig(output_file_path, bbox_inches='tight', dpi=300)
        print(output_file_path)
-    plt.show()
+    #plt.show()
     
     
 def create_2022_pie_chart(data_frame, title):
@@ -399,8 +399,8 @@ if __name__ == "__main__":
     # List of individual plot file paths
     image_paths = ['Inflation_lineplot.png', 'Gdp Growth Over Years_barchart.png', 'Fuel_imports_PieChart.png',
                    'Trade_linePlot.png', 'urban_population_PieChart.png','2022 Data Overview.png']
-    image_paths1 = ['Fuel_imports_PieChart.png',
-                    'urban_population_PieChart.png']
+    """image_paths1 = ['Fuel_imports_PieChart.png',
+                    'urban_population_PieChart.png']"""
     
     # Specify the layout for subplots
     num_rows = 2
