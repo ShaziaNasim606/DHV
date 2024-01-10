@@ -285,7 +285,7 @@ def create_pie_chart(mean_by_country, title, output_file_path):
         title (str): Title of the pie chart.
         output_file_path (str, optional): File path to save the image. If None, the image will not be saved.
     """
-    output_file_path = f"{title}_piechart.png"
+    #output_file_path = f"{title}_piechart.png"
     
     plt.pie(mean_by_country.values, labels=mean_by_country.index, autopct='%1.1f%%', startangle=140)
     plt.title(title)
@@ -298,7 +298,8 @@ def create_pie_chart(mean_by_country, title, output_file_path):
     # Save the image if the output_file_path is provided
     if output_file_path:
        plt.savefig(output_file_path, bbox_inches='tight', dpi=300)
-    #plt.show()
+       print(output_file_path)
+    plt.show()
     
     
 def create_2022_pie_chart(data_frame, title):
@@ -373,19 +374,47 @@ if __name__ == "__main__":
         #print(df)
         create_bar_chart(df, y_label, title)
         
-    """for df_name, df in dataframes.items():
+    for df_name, df in dataframes.items():
         y_label = df_name.replace("_", " ").title()  # Create a y-axis label from DataFrame name
-        title = f"{y_label} in 2022"""
-    create_2022_bar_chart(dataframes)
+        title = f"{y_label} in 2022"
+        create_2022_bar_chart(dataframes)
         
     for df_name, df in dataframes.items():
         mean_by_country = df.iloc[:,1:].mean(axis=0)
         y_label = df_name.replace("_", " ").title()  # Create a y-axis label from DataFrame name
         title = f"Distribution of {y_label} Over Years"
         output_file_path = f"{df_name}_PieChart.png"
+        #print(df_name)
         create_pie_chart(mean_by_country, title, output_file_path)
     
     for df_name, df in dataframes.items():
         y_label = df_name.replace("_", " ").title()  # Create a y-axis label from DataFrame name
         title = f"{y_label} in 2022"
         create_2022_pie_chart(df, title)
+    
+    
+    # Create a new figure for the composite image
+    final_image_graphs = plt.figure(figsize=(16, 12))
+    
+    # List of individual plot file paths
+    image_paths = ['Inflation_lineplot.png', 'Gdp Growth Over Years_barchart.png', 'Fuel_imports_PieChart.png',
+                   'Trade_linePlot.png', 'urban_population_PieChart.png','2022 Data Overview.png']
+    image_paths1 = ['Fuel_imports_PieChart.png',
+                    'urban_population_PieChart.png']
+    
+    # Specify the layout for subplots
+    num_rows = 2
+    num_cols = 3
+    
+    # Loop through the individual plot file paths and add them as subplots to the composite image
+    for i, image_path in enumerate(image_paths):
+        plt.subplot(num_rows, num_cols, i + 1)
+        img = plt.imread(image_path)
+        plt.imshow(img)
+        plt.axis('off')  # Turn off axes for individual plots
+    
+    # Adjust spacing between subplots;/nb 
+    plt.tight_layout()
+    
+    # Save the composite image
+    final_image_graphs.savefig('final_image_graphs.png',bbox_inches='tight', dpi=300)
